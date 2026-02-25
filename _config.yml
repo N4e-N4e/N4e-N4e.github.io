@@ -1,3 +1,5 @@
 theme: jekyll-theme-minimal
 title: DMEPOS AI testing page
 description:
+name: Claude Code Action Official
+uses: anthropics/claude-code-action@v1
