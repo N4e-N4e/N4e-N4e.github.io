@@ -179,12 +179,15 @@ async function sendMessage() {
 
     // Show loading indicator
     const loadingId = 'loading-message';
-    chatWindow.innerHTML += `<div id="${loadingId}" style="color:#94a3b8;"><b>MCP:</b> typing...</div>`;
+    chatWindow.innerHTML += `<div id="${loadingId}" style="color:#94a3b8;"><b>Gemini:</b> typing...</div>`;
     chatWindow.scrollTop = chatWindow.scrollHeight;
 
     try {
-       const formData = { term: userMessage };
-       const response = await fetch('https://dian-intercommissural-superlatively.ngrok-free.dev/api/search', {method: 'POST',headers: {'Content-Type': 'application/json'},body: JSON.stringify(formData)});
+        const response = await fetch('https://backend-site-lifv.onrender.com/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: userMessage })
+        });
 
         const data = await response.json();
 
@@ -192,25 +195,18 @@ async function sendMessage() {
         const loadingElem = document.getElementById(loadingId);
         if (loadingElem) loadingElem.remove();
 
-        // Display MCP results (top 5)
-        if (data.results && data.results.length > 0) {
-            data.results.slice(0,5).forEach(r => {
-                chatWindow.innerHTML += `
-                    <div style="margin-bottom:10px;">
-                        <b>${r.Title}</b><br>
-                        ${r.WebPage.Content || ''}<br>
-                        <a href="${r.WebPage['Link to Full Report']}" target="_blank" style="color:#38bdf8;">View Full Report</a>
-                    </div>`;
-            });
+        if (data.reply) {
+            chatWindow.innerHTML += `<div><b>Gemini:</b> ${data.reply}</div>`;
+        } else if (data.error) {
+            chatWindow.innerHTML += `<div><b>Gemini:</b> Error: ${data.error}</div>`;
         } else {
-            chatWindow.innerHTML += `<div><b>MCP:</b> No results found</div>`;
+            chatWindow.innerHTML += `<div><b>Gemini:</b> No response</div>`;
         }
-
     } catch (err) {
         console.error(err);
         const loadingElem = document.getElementById(loadingId);
         if (loadingElem) loadingElem.remove();
-        chatWindow.innerHTML += `<div><b>MCP:</b> Error fetching results</div>`;
+        chatWindow.innerHTML += `<div><b>Gemini:</b> Error fetching results</div>`;
     }
 
     chatWindow.scrollTop = chatWindow.scrollHeight;
