@@ -195,6 +195,9 @@ async function sendMessage() {
         const loadingElem = document.getElementById(loadingId);
         if (loadingElem) loadingElem.remove();
 
+        
+        console.log(data); 
+
         if (data.reply) {
             chatWindow.innerHTML += `<div><b>Gemini:</b> ${data.reply}</div>`;
         } else if (data.error) {
