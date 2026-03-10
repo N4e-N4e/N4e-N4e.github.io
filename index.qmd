@@ -390,24 +390,19 @@ fig.show()
 ```
 
 # AI Assistant
+```{python}
+#| output: asis
+print("""
+
+.chat-shell { display: flex; flex-direction: column; height: 75vh; gap: 15px; padding: 10px; }
+.chat-window { flex: 1; background: #1f2937; border-radius: 12px; padding: 15px; overflow-y: auto; color: #e2e8f0; }
+.chat-input-row { display: flex; gap: 10px; }
+.chat-input-row input { flex: 1; padding: 10px; border-radius: 8px; border: none; background: #1f2937; color: white; }
+.chat-input-row button { padding: 10px 20px; border-radius: 8px; border: none; background: #38bdf8; color: black; font-weight: bold; cursor: pointer; }
 
 
-
-```{=html}
-
   
-    Ask about payment trends, supplier anomalies, provider patterns, or risk signals
-    This page reuses the chat experience from the original static HTML and can point to the existing backend endpoint.
-  
-  
-    Summarize the highest-risk supplier patterns
-    Compare referral spikes by state
-    Explain the main open payment outliers
-  
-  
-    
-      Assistant: Hello! Ask about the sample dashboard trends or wire this pane to the existing Gemini backend.
-    
+    Assistant: Hello! Ask about payment trends, supplier anomalies, provider patterns, or risk signals.
   
   
     
@@ -415,4 +410,33 @@ fig.show()
   
 
 
+const chatInput = document.getElementById('chat-input');
+const chatButton = document.getElementById('chat-send');
+const chatWindow = document.getElementById('chat-window');
+async function sendMessage() {
+    const msg = chatInput.value;
+    if (!msg) return;
+    chatWindow.innerHTML += 'You: ' + msg + '';
+    chatInput.value = '';
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+    chatWindow.innerHTML += 'Gemini: typing...';
+    try {
+        const res = await fetch('https://backend-site-lifv.onrender.com/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: msg })
+        });
+        const data = await res.json();
+        document.getElementById('loading')?.remove();
+        chatWindow.innerHTML += 'Gemini: ' + (data.reply || data.error || 'No response') + '';
+    } catch(e) {
+        document.getElementById('loading')?.remove();
+        chatWindow.innerHTML += 'Gemini: Error fetching response.';
+    }
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+}
+chatButton.addEventListener('click', sendMessage);
+chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
+
+""")
 ```
