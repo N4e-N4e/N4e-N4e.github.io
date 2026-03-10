@@ -1,0 +1,9 @@
+signal_type,open_cases,exposure_m,rule_confidence,severity_band
+Duplicate Billing,84,12.7,88,Critical
+Outlier Utilization,71,10.9,81,High
+Referral Loop,58,8.4,79,High
+Rapid Repeat Claims,65,7.8,76,Medium
+Supplier Concentration,44,6.1,72,Medium
+Geographic Drift,39,4.9,69,Low
+Upcoding Pattern,77,11.5,85,Critical
+Unusual Payment Velocity,53,7.2,74,Medium
