@@ -1,0 +1,21 @@
+region,payment_category,amount_m,payment_count,risk_index
+Northeast,Consulting Fees,18.4,1220,73
+Northeast,Speaker Programs,11.6,845,68
+Northeast,Travel & Lodging,7.9,640,61
+Northeast,Research Support,22.1,710,58
+Northeast,Meals & Entertainment,5.2,1380,54
+South,Consulting Fees,21.7,1395,76
+South,Speaker Programs,14.5,990,71
+South,Travel & Lodging,9.8,780,66
+South,Research Support,24.6,755,60
+South,Meals & Entertainment,6.4,1595,57
+Midwest,Consulting Fees,16.9,1105,69
+Midwest,Speaker Programs,10.8,792,65
+Midwest,Travel & Lodging,8.3,675,62
+Midwest,Research Support,19.7,640,56
+Midwest,Meals & Entertainment,4.9,1280,51
+West,Consulting Fees,23.6,1480,79
+West,Speaker Programs,15.4,1015,73
+West,Travel & Lodging,10.5,835,68
+West,Research Support,28.2,812,63
+West,Meals & Entertainment,6.8,1670,58

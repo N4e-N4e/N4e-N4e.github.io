@@ -1,0 +1,11 @@
+provider_name,specialty,referred_claims,flagged_referrals,provider_risk_score,state
+Dr. Amelia Hart,Cardiology,820,61,81,TX
+Dr. Victor Lane,Orthopedics,760,49,73,FL
+Dr. Nina Brooks,Neurology,690,58,77,CA
+Dr. Samuel Price,Pain Management,910,88,86,NY
+Dr. Elena Moss,Family Medicine,640,36,64,IL
+Dr. Grace Kim,Oncology,705,52,75,GA
+Dr. Marcus Hale,Cardiology,780,67,79,NJ
+Dr. Irene Patel,Orthopedics,735,43,70,AZ
+Dr. Leo Chen,Neurology,670,47,72,WA
+Dr. Olivia Reed,Pain Management,845,81,84,PA

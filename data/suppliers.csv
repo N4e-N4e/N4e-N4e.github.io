@@ -1,0 +1,11 @@
+supplier_name,product_family,total_spend_m,high_risk_orders,supplier_risk_score,supplier_tier
+MedAxis Distribution,Durable Medical Equipment,14.8,29,82,Tier 1
+Northstar Rx,Pharmaceuticals,19.3,33,79,Tier 1
+CareBridge Labs,Diagnostic Services,11.2,18,67,Tier 2
+Vertex Surgical,Surgical Supplies,16.4,26,74,Tier 1
+BluePeak Imaging,Imaging Equipment,9.7,11,63,Tier 2
+Summit Home Health,Home Health Kits,7.9,21,71,Tier 3
+Pioneer Ortho,Orthopedic Devices,12.5,24,76,Tier 2
+Harbor MedTech,Monitoring Devices,10.6,15,65,Tier 2
+Crestline Infusion,Infusion Therapy,13.9,27,78,Tier 1
+Sterling Mobility,Durable Medical Equipment,8.8,17,69,Tier 3
