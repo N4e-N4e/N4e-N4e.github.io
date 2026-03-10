@@ -26,6 +26,7 @@ python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 quarto render
+quarto publish gh-pages
 ```
 
 The rendered site will be written to `docs/` because GitHub Pages can publish directly from that directory, and the included GitHub Action is set up to publish the rendered dashboard.
