@@ -1,0 +1,20 @@
+project:
+  type: default
+  output-dir: docs
+
+execute:
+  echo: false
+  warning: false
+  message: false
+  freeze: auto
+
+format:
+  dashboard:
+    theme:
+      dark: darkly
+      light: flatly
+    css: styles/dashboard.css
+    code-fold: false
+    toc: false
+
+jupyter: python3

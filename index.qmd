@@ -1,0 +1,419 @@
+---
+title: "Fraud Analysis Dashboard"
+subtitle: "Quarto starter with sample visuals and an embedded AI assistant"
+format: dashboard
+resources:
+  - scripts/chat.js
+  - styles/dashboard.css
+  - data/*.csv
+---
+
+```{python}
+#| label: setup
+#| include: false
+
+# Import pandas for data loading and shaping
+import pandas as pd
+# Import plotly express for interactive charts
+import plotly.express as px
+
+# Read the sample datasets used by each dashboard page
+open_payments = pd.read_csv("data/open_payments.csv")
+# Read the supplier dataset for spend and risk visuals
+suppliers = pd.read_csv("data/suppliers.csv")
+# Read the referring provider dataset for referral visuals
+referring_providers = pd.read_csv("data/referring_providers.csv")
+# Read the risk signal dataset for case and exposure visuals
+risk_signals = pd.read_csv("data/risk_signals.csv")
+
+# Define a shared chart style helper so visuals stay consistent
+
+def style_plot(fig):
+    # Update the plot to match the dark dashboard theme
+    fig.update_layout(
+        paper_bgcolor="#1e293b",
+        plot_bgcolor="#1e293b",
+        font=dict(color="#e2e8f0"),
+        margin=dict(l=30, r=20, t=60, b=30),
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+    )
+    # Refine axis styling for readability against the dark background
+    fig.update_xaxes(showgrid=False, zeroline=False)
+    # Refine axis styling for readability against the dark background
+    fig.update_yaxes(gridcolor="rgba(148, 163, 184, 0.18)", zeroline=False)
+    # Return the styled chart object
+    return fig
+```
+
+# Open Payments
+
+## Row {height="34%"}
+
+```{python}
+#| title: "Open Payments Snapshot"
+#| output: asis
+
+# Calculate the total open payments amount across all categories and regions
+open_payment_total = open_payments["amount_m"].sum()
+# Calculate the total number of records used in the sample view
+open_payment_records = open_payments["payment_count"].sum()
+# Calculate the average risk index for the page summary cards
+open_payment_risk = open_payments["risk_index"].mean()
+
+# Print a compact metric layout that echoes the original card-based design
+print(f"""
+<div class='metric-grid'>
+  <div class='metric-tile'>
+    <div class='metric-label'>Total Payments</div>
+    <div class='metric-value'>${open_payment_total:,.1f}M</div>
+    <div class='metric-sub'>Sample modeled amount</div>
+  </div>
+  <div class='metric-tile'>
+    <div class='metric-label'>Payment Records</div>
+    <div class='metric-value'>{open_payment_records:,.0f}</div>
+    <div class='metric-sub'>Across four regions</div>
+  </div>
+  <div class='metric-tile'>
+    <div class='metric-label'>Avg. Risk Index</div>
+    <div class='metric-value'>{open_payment_risk:.1f}</div>
+    <div class='metric-sub'>Scaled 0 to 100</div>
+  </div>
+</div>
+""")
+```
+
+## Row {height="66%"}
+
+```{python}
+#| title: "Payments by Category"
+
+# Aggregate payment totals by payment category for the bar chart
+payments_by_category = (
+    open_payments
+    .groupby("payment_category", as_index=False)["amount_m"]
+    .sum()
+    .sort_values("amount_m", ascending=False)
+)
+
+# Build the category comparison bar chart
+fig = px.bar(
+    payments_by_category,
+    x="payment_category",
+    y="amount_m",
+    text_auto=".1f",
+    labels={"payment_category": "Category", "amount_m": "Amount (Millions)"},
+)
+# Apply shared dashboard styling to the chart
+fig = style_plot(fig)
+# Render the chart to the dashboard card
+fig.show()
+```
+
+```{python}
+#| title: "Regional Share of Open Payments"
+
+# Aggregate payment totals by region for the pie chart
+payments_by_region = (
+    open_payments
+    .groupby("region", as_index=False)["amount_m"]
+    .sum()
+    .sort_values("amount_m", ascending=False)
+)
+
+# Build the regional distribution pie chart
+fig = px.pie(
+    payments_by_region,
+    names="region",
+    values="amount_m",
+    hole=0.45,
+)
+# Apply shared dashboard styling to the chart
+fig = style_plot(fig)
+# Render the chart to the dashboard card
+fig.show()
+```
+
+# Suppliers
+
+## Row {height="34%"}
+
+```{python}
+#| title: "Supplier Snapshot"
+#| output: asis
+
+# Calculate total supplier spend from the sample data
+supplier_spend_total = suppliers["total_spend_m"].sum()
+# Calculate total high-risk orders from the sample data
+supplier_risk_orders = suppliers["high_risk_orders"].sum()
+# Calculate the weighted average supplier risk score
+supplier_avg_risk = suppliers["supplier_risk_score"].mean()
+
+# Print metric cards for the supplier page
+print(f"""
+<div class='metric-grid'>
+  <div class='metric-tile'>
+    <div class='metric-label'>Supplier Spend</div>
+    <div class='metric-value'>${supplier_spend_total:,.1f}M</div>
+    <div class='metric-sub'>Across strategic vendors</div>
+  </div>
+  <div class='metric-tile'>
+    <div class='metric-label'>High-Risk Orders</div>
+    <div class='metric-value'>{supplier_risk_orders:,.0f}</div>
+    <div class='metric-sub'>Flagged in sample history</div>
+  </div>
+  <div class='metric-tile'>
+    <div class='metric-label'>Avg. Supplier Risk</div>
+    <div class='metric-value'>{supplier_avg_risk:.1f}</div>
+    <div class='metric-sub'>Scaled 0 to 100</div>
+  </div>
+</div>
+""")
+```
+
+## Row {height="66%"}
+
+```{python}
+#| title: "Top Supplier Spend"
+
+# Select the highest-spend suppliers for the bar chart
+supplier_spend = suppliers.sort_values("total_spend_m", ascending=False)
+
+# Build the supplier spend comparison bar chart
+fig = px.bar(
+    supplier_spend,
+    x="supplier_name",
+    y="total_spend_m",
+    color="supplier_tier",
+    text_auto=".1f",
+    labels={"supplier_name": "Supplier", "total_spend_m": "Spend (Millions)"},
+)
+# Apply shared dashboard styling to the chart
+fig = style_plot(fig)
+# Render the chart to the dashboard card
+fig.show()
+```
+
+```{python}
+#| title: "Spend Mix by Product Family"
+
+# Aggregate supplier spend by product family for the pie chart
+spend_by_family = (
+    suppliers
+    .groupby("product_family", as_index=False)["total_spend_m"]
+    .sum()
+    .sort_values("total_spend_m", ascending=False)
+)
+
+# Build the product-family distribution pie chart
+fig = px.pie(
+    spend_by_family,
+    names="product_family",
+    values="total_spend_m",
+    hole=0.45,
+)
+# Apply shared dashboard styling to the chart
+fig = style_plot(fig)
+# Render the chart to the dashboard card
+fig.show()
+```
+
+# Referring Providers
+
+## Row {height="34%"}
+
+```{python}
+#| title: "Provider Snapshot"
+#| output: asis
+
+# Calculate total referred claims represented in the page
+provider_claims_total = referring_providers["referred_claims"].sum()
+# Calculate total flagged referrals represented in the page
+provider_flagged_total = referring_providers["flagged_referrals"].sum()
+# Calculate the average referral risk score for page context
+provider_avg_risk = referring_providers["provider_risk_score"].mean()
+
+# Print metric cards for the provider page
+print(f"""
+<div class='metric-grid'>
+  <div class='metric-tile'>
+    <div class='metric-label'>Referred Claims</div>
+    <div class='metric-value'>{provider_claims_total:,.0f}</div>
+    <div class='metric-sub'>Across high-volume referrers</div>
+  </div>
+  <div class='metric-tile'>
+    <div class='metric-label'>Flagged Referrals</div>
+    <div class='metric-value'>{provider_flagged_total:,.0f}</div>
+    <div class='metric-sub'>Triggered review rules</div>
+  </div>
+  <div class='metric-tile'>
+    <div class='metric-label'>Avg. Provider Risk</div>
+    <div class='metric-value'>{provider_avg_risk:.1f}</div>
+    <div class='metric-sub'>Scaled 0 to 100</div>
+  </div>
+</div>
+""")
+```
+
+## Row {height="66%"}
+
+```{python}
+#| title: "Referrals by Specialty"
+
+# Aggregate claim volume by referring specialty for the bar chart
+claims_by_specialty = (
+    referring_providers
+    .groupby("specialty", as_index=False)["referred_claims"]
+    .sum()
+    .sort_values("referred_claims", ascending=False)
+)
+
+# Build the specialty comparison bar chart
+fig = px.bar(
+    claims_by_specialty,
+    x="specialty",
+    y="referred_claims",
+    text_auto=True,
+    labels={"specialty": "Specialty", "referred_claims": "Referred Claims"},
+)
+# Apply shared dashboard styling to the chart
+fig = style_plot(fig)
+# Render the chart to the dashboard card
+fig.show()
+```
+
+```{python}
+#| title: "Flagged Referrals by State"
+
+# Aggregate flagged referrals by state for the pie chart
+flagged_by_state = (
+    referring_providers
+    .groupby("state", as_index=False)["flagged_referrals"]
+    .sum()
+    .sort_values("flagged_referrals", ascending=False)
+)
+
+# Build the state distribution pie chart
+fig = px.pie(
+    flagged_by_state,
+    names="state",
+    values="flagged_referrals",
+    hole=0.45,
+)
+# Apply shared dashboard styling to the chart
+fig = style_plot(fig)
+# Render the chart to the dashboard card
+fig.show()
+```
+
+# Risk Signals
+
+## Row {height="34%"}
+
+```{python}
+#| title: "Risk Signal Snapshot"
+#| output: asis
+
+# Calculate total open cases across all signal types
+risk_cases_total = risk_signals["open_cases"].sum()
+# Calculate total financial exposure represented in the sample data
+risk_exposure_total = risk_signals["exposure_m"].sum()
+# Calculate the average rule confidence score for the page summary
+risk_confidence_avg = risk_signals["rule_confidence"].mean()
+
+# Print metric cards for the risk signal page
+print(f"""
+<div class='metric-grid'>
+  <div class='metric-tile'>
+    <div class='metric-label'>Open Cases</div>
+    <div class='metric-value'>{risk_cases_total:,.0f}</div>
+    <div class='metric-sub'>Across active signals</div>
+  </div>
+  <div class='metric-tile'>
+    <div class='metric-label'>Exposure</div>
+    <div class='metric-value'>${risk_exposure_total:,.1f}M</div>
+    <div class='metric-sub'>Estimated recoverable amount</div>
+  </div>
+  <div class='metric-tile'>
+    <div class='metric-label'>Avg. Rule Confidence</div>
+    <div class='metric-value'>{risk_confidence_avg:.1f}</div>
+    <div class='metric-sub'>Scaled 0 to 100</div>
+  </div>
+</div>
+""")
+```
+
+## Row {height="66%"}
+
+```{python}
+#| title: "Open Cases by Signal Type"
+
+# Sort signal categories by open case volume for the bar chart
+signal_cases = risk_signals.sort_values("open_cases", ascending=False)
+
+# Build the signal comparison bar chart
+fig = px.bar(
+    signal_cases,
+    x="signal_type",
+    y="open_cases",
+    color="severity_band",
+    text_auto=True,
+    labels={"signal_type": "Signal Type", "open_cases": "Open Cases"},
+)
+# Apply shared dashboard styling to the chart
+fig = style_plot(fig)
+# Render the chart to the dashboard card
+fig.show()
+```
+
+```{python}
+#| title: "Exposure by Severity Band"
+
+# Aggregate exposure by severity band for the pie chart
+exposure_by_severity = (
+    risk_signals
+    .groupby("severity_band", as_index=False)["exposure_m"]
+    .sum()
+    .sort_values("exposure_m", ascending=False)
+)
+
+# Build the severity mix pie chart
+fig = px.pie(
+    exposure_by_severity,
+    names="severity_band",
+    values="exposure_m",
+    hole=0.45,
+)
+# Apply shared dashboard styling to the chart
+fig = style_plot(fig)
+# Render the chart to the dashboard card
+fig.show()
+```
+
+# AI Assistant
+
+## Row {height="100%"}
+
+::: {.card title="AI Fraud Assistant"}
+<div class="assistant-shell">
+  <div class="assistant-intro">
+    <div class="assistant-title">Ask about payment trends, supplier anomalies, provider patterns, or risk signals</div>
+    <div class="assistant-subtitle">This page reuses the chat experience from the original static HTML and can point to the existing backend endpoint.</div>
+  </div>
+  <div class="assistant-suggestions">
+    <div class="suggestion-chip">Summarize the highest-risk supplier patterns</div>
+    <div class="suggestion-chip">Compare referral spikes by state</div>
+    <div class="suggestion-chip">Explain the main open payment outliers</div>
+  </div>
+  <div class="chat-window" id="chat-window">
+    <div class="message assistant-message">
+      <strong>Assistant:</strong> Hello; ask about the sample dashboard trends or wire this pane to the existing Gemini backend.
+    </div>
+  </div>
+  <div class="chat-input-row">
+    <input id="chat-input" type="text" placeholder="Ask about fraud risk patterns..." />
+    <button id="chat-send" type="button">Send</button>
+  </div>
+  <div class="assistant-note">CUSTOMIZE: update the chat endpoint in <code>scripts/chat.js</code> if the backend URL changes.</div>
+</div>
+<script src="scripts/chat.js"></script>
+:::
