@@ -12,7 +12,7 @@ if (chatWindow && chatInput && chatSend) {
     wrapper.classList.add(role === 'user' ? 'user-message' : 'assistant-message');
 
     const label = document.createElement('strong');
-    label.textContent = role === 'user' ? 'You: ' : 'Gemini: ';
+    label.textContent = role === 'user' ? 'You: ' : 'Assistant: ';
 
     const body = document.createElement('span');
     body.textContent = text;
