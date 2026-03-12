@@ -31,6 +31,11 @@ quarto publish gh-pages
 
 The rendered site will be written to `docs/` because GitHub Pages can publish directly from that directory, and the included GitHub Action is set up to publish the rendered dashboard.
 
+You can preview any local changes before pushing using:
+```bash
+quarto preview index.qmd
+```
+
 ## Backend note
 
 The AI Assistant page points to the same backend URL used in the original HTML version.
