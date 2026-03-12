@@ -375,9 +375,6 @@ HTML("""
 
 <div class="chat-shell">
   <div class="chat-window" id="chat-window">
-    <div class="message assistant-message">
-      <strong>Assistant: </strong><span>Hello! Ask about payment trends, supplier anomalies, provider patterns, or risk signals.</span>
-    </div>
   </div>
   <div class="chat-input-row">
     <input id="chat-input" type="text" placeholder="Ask about fraud risk patterns..." />
