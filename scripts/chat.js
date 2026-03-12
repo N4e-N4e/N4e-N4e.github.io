@@ -1,5 +1,4 @@
 const CHAT_ENDPOINT = window.QUARTO_CHAT_ENDPOINT || 'https://backend-site-lifv.onrender.com/chat';
-
 const chatWindow = document.getElementById('chat-window');
 const chatInput = document.getElementById('chat-input');
 const chatSend = document.getElementById('chat-send');
@@ -14,8 +13,19 @@ if (chatWindow && chatInput && chatSend) {
     const label = document.createElement('strong');
     label.textContent = role === 'user' ? 'You: ' : 'Assistant: ';
 
-    const body = document.createElement('span');
-    body.textContent = text;
+    const body = document.createElement('div');
+    body.style.marginTop = '4px';
+    body.innerHTML = text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      .replace(/^#{1,3} (.+)$/gm, '<strong>$1</strong>')
+      .replace(/^\s*[-•]\s+(.+)$/gm, '&bull; $1<br>')
+      .replace(/^\d+\.\s+(.+)$/gm, (m, p1) => `${m.match(/^\d+/)[0]}. ${p1}<br>`)
+      .replace(/\n\n/g, '<br><br>')
+      .replace(/\n/g, '<br>');
 
     wrapper.appendChild(label);
     wrapper.appendChild(body);
@@ -29,7 +39,6 @@ if (chatWindow && chatInput && chatSend) {
   async function sendMessage() {
     const prompt = chatInput.value.trim();
     if (!prompt) return;
-
     appendMessage('user', prompt);
     chatInput.value = '';
 
@@ -42,7 +51,6 @@ if (chatWindow && chatInput && chatSend) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: prompt })
       });
-
       const data = await response.json();
       loadingNode.remove();
 
