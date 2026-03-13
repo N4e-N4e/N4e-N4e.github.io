@@ -320,62 +320,17 @@ fig.show()
 
 # AI Assistant
 
-## Row {height="100%"}
-
+## Row {height="35%"}
 ```{python}
-#| title: "AI Fraud Assistant"
+#| title: "How to Use & Limitations"
 
 HTML("""
 <style>
-.chat-shell {
-  display: flex;
-  flex-direction: column;
-  height: 45vh;
-  gap: 12px;
-  padding: 8px;
-}
-.chat-window {
-  flex: 1;
-  background: #1f2937;
-  border-radius: 12px;
-  padding: 15px;
-  overflow-y: auto;
-  color: #e2e8f0;
-  font-size: 14px;
-}
-.message { margin-bottom: 10px; line-height: 1.5; }
-.user-message strong { color: #38bdf8; }
-.assistant-message strong { color: #a78bfa; }
-.chat-input-row {
-  display: flex;
-  gap: 10px;
-}
-.chat-input-row input {
-  flex: 1;
-  padding: 10px 14px;
-  border-radius: 8px;
-  border: 1px solid #334155;
-  background: #1f2937;
-  color: #e2e8f0;
-  font-size: 14px;
-  outline: none;
-}
-.chat-input-row button {
-  padding: 10px 22px;
-  border-radius: 8px;
-  border: none;
-  background: #38bdf8;
-  color: #0f172a;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 14px;
-}
-.chat-input-row button:hover { background: #7dd3fc; }
 .info-panel {
   display: flex;
   gap: 12px;
-  margin-bottom: 4px;
-  flex-shrink: 0;
+  padding: 8px;
+  height: 100%;
 }
 .info-box {
   flex: 1;
@@ -425,6 +380,60 @@ HTML("""
     </ol>
   </div>
 </div>
+""")
+```
+
+## Row {height="65%"}
+```{python}
+#| title: "AI Fraud Assistant"
+
+HTML("""
+<style>
+.chat-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 12px;
+  padding: 8px;
+}
+.chat-window {
+  flex: 1;
+  background: #1f2937;
+  border-radius: 12px;
+  padding: 15px;
+  overflow-y: auto;
+  color: #e2e8f0;
+  font-size: 14px;
+}
+.message { margin-bottom: 10px; line-height: 1.5; }
+.user-message strong { color: #38bdf8; }
+.assistant-message strong { color: #a78bfa; }
+.chat-input-row {
+  display: flex;
+  gap: 10px;
+}
+.chat-input-row input {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  background: #1f2937;
+  color: #e2e8f0;
+  font-size: 14px;
+  outline: none;
+}
+.chat-input-row button {
+  padding: 10px 22px;
+  border-radius: 8px;
+  border: none;
+  background: #38bdf8;
+  color: #0f172a;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+}
+.chat-input-row button:hover { background: #7dd3fc; }
+</style>
 
 <div class="chat-shell">
   <div class="chat-window" id="chat-window">
