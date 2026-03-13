@@ -19,6 +19,7 @@ from IPython.display import HTML
 open_payments = pd.read_csv("data/open_payments.csv")
 suppliers = pd.read_csv("data/suppliers.csv")
 supplier_spike_trend = pd.read_csv("data/supplier_spike_trend.csv")
+supplier_hcpcs_table = pd.read_csv("data/supplier_hcPCS_table.csv")
 referring_providers = pd.read_csv("data/referring_providers.csv")
 risk_signals = pd.read_csv("data/risk_signals.csv")
 
@@ -176,7 +177,6 @@ fig = px.line(
 )
 
 fig = style_plot(fig)
-
 fig.update_layout(
     height=420,   # controls vertical size
     margin=dict(l=20, r=20, t=40, b=20)
@@ -184,6 +184,37 @@ fig.update_layout(
 
 fig.show()
 ```
+## Row {height="40%"}
+#| title: "Supplier HCPCS Billing Breakdown"
+
+
+hcpcs_heatmap = supplier_hcpcs_table.set_index("suplr_npi")
+#| title: "Supplier HCPCS Billing Heatmap"
+
+import plotly.express as px
+
+hcpcs_heatmap = supplier_hcpcs_table.set_index("suplr_npi")
+
+fig = px.imshow(
+    hcpcs_heatmap,
+    text_auto=True,        # shows numbers inside boxes
+    aspect="auto",
+    labels=dict(
+        x="HCPCS Code",
+        y="Supplier NPI",
+        color="Total Services"
+    )
+)
+
+fig = style_plot(fig)
+
+fig.update_layout(
+    height=450
+)
+
+fig.show()
+```
+
 
 # Referring Providers
 
