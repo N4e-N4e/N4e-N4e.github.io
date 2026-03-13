@@ -34,7 +34,7 @@ if (chatWindow && chatInput && chatSend) {
     return wrapper;
   }
 
-  appendMessage('assistant', 'Hello! Ask about payment trends, supplier anomalies, provider patterns, or risk signals.');
+  appendMessage('assistant', 'Hello! Ask a question about a person or business.');
 
   async function sendMessage() {
     const prompt = chatInput.value.trim();
