@@ -18,6 +18,7 @@ from IPython.display import HTML
 
 open_payments = pd.read_csv("data/open_payments.csv")
 suppliers = pd.read_csv("data/suppliers.csv")
+supplier_spike_trend = pd.read_csv("data/supplier_spike_trend.csv")
 referring_providers = pd.read_csv("data/referring_providers.csv")
 risk_signals = pd.read_csv("data/risk_signals.csv")
 
@@ -172,6 +173,27 @@ fig = px.pie(
     values="total_spend_m",
     hole=0.45,
 )
+fig = style_plot(fig)
+fig.show()
+```
+## Row {height="66%"}
+
+```{python}
+#| title: "Supplier Billing Trends: Spike & Disappearance"
+
+fig = px.line(
+    supplier_spike_trend,
+    x="year",
+    y="tot_suplr_srvcs",
+    color="suplr_npi",
+    markers=True,
+    labels={
+        "year": "Year",
+        "tot_suplr_srvcs": "Total Services",
+        "suplr_npi": "Supplier NPI"
+    }
+)
+
 fig = style_plot(fig)
 fig.show()
 ```
