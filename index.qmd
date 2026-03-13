@@ -336,16 +336,16 @@ HTML("""
   flex: 1;
   background: #1f2937;
   border-radius: 10px;
-  padding: clamp(8px, 1.2vw, 16px);
-  font-size: clamp(11px, 1vw, 15px);
+  padding: clamp(8px, 1.5vw, 20px);
+  font-size: clamp(11px, 1.3vw, 17px);
   color: #e2e8f0;
   border-left: 3px solid;
 }
 .info-box.instructions { border-color: #38bdf8; }
 .info-box.limitations  { border-color: #f87171; }
 .info-box h4 {
-  margin: 0 0 clamp(4px, 0.6vw, 10px) 0;
-  font-size: clamp(11px, 1vw, 15px);
+  margin: 0 0 clamp(4px, 0.8vw, 12px) 0;
+  font-size: clamp(11px, 1.3vw, 17px);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -354,8 +354,8 @@ HTML("""
 .info-box.limitations  h4 { color: #f87171; }
 .info-box ol {
   margin: 0;
-  padding-left: clamp(12px, 1.2vw, 18px);
-  line-height: clamp(1.4, 1.8vw, 1.8);
+  padding-left: clamp(12px, 1.5vw, 20px);
+  line-height: clamp(1.4, 2.2vw, 2.2);
   color: #94a3b8;
 }
 </style>
@@ -366,7 +366,7 @@ HTML("""
     <ol>
       <li>Type a person's name, business name, or topic into the chat box and press <strong>Send</strong> or hit <strong>Enter</strong>.</li>
       <li>The AI will search the relevant database and return a <strong>Summary</strong> and <strong>Fraud Analysis</strong>.</li>
-      <li>For best results, be specific — use a full name, business name, or NPI number where available.</li>
+      <li>For best results, use a full name, business name, or NPI number.</li>
       <li>To target a specific database, mention <strong>OIG</strong> or <strong>SOS</strong> in your question.</li>
     </ol>
   </div>
@@ -375,7 +375,7 @@ HTML("""
     <ol>
       <li>Information is sourced from two databases only — <strong>HHS OIG</strong> and <strong>Missouri Secretary of State (SOS)</strong>.</li>
       <li>The AI searches <strong>one database per question</strong>. If none is specified, it will decide based on your question.</li>
-      <li>Responses are based on the <strong>first result returned</strong>. Including more results is possible but will increase response time.</li>
+      <li>Responses are based on the <strong>first result returned</strong>. More results can be included but will increase response time.</li>
       <li>The AI is limited to <strong>2 questions per minute</strong>. If you receive an error, wait a moment and try again.</li>
     </ol>
   </div>
