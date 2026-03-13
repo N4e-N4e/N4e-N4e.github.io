@@ -142,6 +142,7 @@ HTML(f"""
 ```
 
 ## Row {height="66%"}
+
 ```{python}
 #| title: "Supplier Billing Trends: Spike & Disappearance"
 
@@ -158,36 +159,17 @@ fig = px.line(
     }
 )
 
+fig = style_plot(fig)
 fig.show()
-```
+
 
 ```{python}
-#| title: "Supplier HCPCS Billing Breakdown"
-hcpcs_heatmap = supplier_hcpcs_table.set_index("suplr_npi")
+
 #| title: "Supplier HCPCS Billing Heatmap"
 
-import plotly.express as px
 
-hcpcs_heatmap = supplier_hcpcs_table.set_index("suplr_npi")
+supplier_hcpcs_table
 
-fig = px.imshow(
-    hcpcs_heatmap,
-    text_auto=True,        # shows numbers inside boxes
-    aspect="auto",
-    labels=dict(
-        x="HCPCS Code",
-        y="Supplier NPI",
-        color="Total Services"
-    )
-)
-
-fig = style_plot(fig)
-
-fig.update_layout(
-    height=450
-)
-
-fig.show()
 ```
 
 
