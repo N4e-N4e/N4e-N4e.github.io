@@ -320,7 +320,7 @@ fig.show()
 
 # AI Assistant
 
-## Row {height="30%"}
+## Row {height="fit-content"}
 ```{python}
 #| title: "How to Use & Limitations"
 
@@ -331,8 +331,6 @@ HTML("""
   flex-direction: row;
   gap: 12px;
   padding: 8px;
-  height: 100%;
-  overflow: hidden;
 }
 .info-box {
   flex: 1;
@@ -342,7 +340,6 @@ HTML("""
   font-size: clamp(11px, 1vw, 15px);
   color: #e2e8f0;
   border-left: 3px solid;
-  overflow: hidden;
 }
 .info-box.instructions { border-color: #38bdf8; }
 .info-box.limitations  { border-color: #f87171; }
@@ -449,4 +446,3 @@ HTML("""
 <script src="scripts/chat.js"></script>
 """)
 ```
-
