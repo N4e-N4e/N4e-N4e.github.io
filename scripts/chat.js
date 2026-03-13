@@ -16,17 +16,17 @@ if (chatWindow && chatInput && chatSend) {
     const body = document.createElement('div');
     body.style.marginTop = '4px';
     body.innerHTML = text
-  .replace(/&/g, '&amp;')
-  .replace(/</g, '&lt;')
-  .replace(/>/g, '&gt;')
-  .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-  .replace(/\*(.*?)\*/g, '<em>$1</em>')
-  .replace(/^#{1,3} (.+)$/gm, '<strong>$1</strong>')
-  .replace(/^\s*[-•]\s+(.+)$/gm, '&bull; $1<br>')
-  .replace(/^\d+\.\s+(.+)$/gm, (m, p1) => `${m.match(/^\d+/)[0]}. ${p1}<br>`)
-  .replace(/\n\n/g, '<br><br>')
-  .replace(/\n/g, '<br>')
-  .replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer" style="color:#38bdf8;">$1</a>'); 
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      .replace(/^#{1,3} (.+)$/gm, '<strong>$1</strong>')
+      .replace(/^\s*[-•]\s+(.+)$/gm, '&bull; $1<br>')
+      .replace(/^\d+\.\s+(.+)$/gm, (m, p1) => `${m.match(/^\d+/)[0]}. ${p1}<br>`)
+      .replace(/\n\n/g, '<br><br>')
+      .replace(/\n/g, '<br>')
+      .replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer" style="color:#38bdf8;">$1</a>'); 
 
     wrapper.appendChild(label);
     wrapper.appendChild(body);
