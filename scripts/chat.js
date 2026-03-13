@@ -26,7 +26,7 @@ if (chatWindow && chatInput && chatSend) {
       .replace(/^\d+\.\s+(.+)$/gm, (m, p1) => `${m.match(/^\d+/)[0]}. ${p1}<br>`)
       .replace(/\n\n/g, '<br><br>')
       .replace(/\n/g, '<br>')
-      .replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer" style="color:#38bdf8;">$1</a>'); 
+      .replace(/(https?:\/\/[^\s<]+?)([).,'";]*(?:\s|$))/g, '<a href="$1" target="_blank" rel="noopener noreferrer" style="color:#38bdf8;">$1</a>$2'); 
 
     wrapper.appendChild(label);
     wrapper.appendChild(body);
