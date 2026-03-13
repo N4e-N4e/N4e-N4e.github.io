@@ -161,12 +161,10 @@ fig = px.line(
 
 fig = style_plot(fig)
 fig.show()
-
+```
 
 ```{python}
-
 #| title: "Supplier HCPCS Billing Heatmap"
-
 
 supplier_hcpcs_table
 
