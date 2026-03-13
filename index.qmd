@@ -334,6 +334,7 @@ HTML("""
 }
 .info-box {
   flex: 1;
+  align-self: flex-start;
   background: #1f2937;
   border-radius: 10px;
   padding: clamp(8px, 1.5vw, 20px);
