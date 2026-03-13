@@ -338,8 +338,8 @@ HTML("""
   flex: 1;
   background: #1f2937;
   border-radius: 10px;
-  padding: 14px 18px;
-  font-size: 13px;
+  padding: clamp(10px, 1.5vw, 20px);
+  font-size: clamp(13px, 1.1vw, 17px);
   color: #e2e8f0;
   border-left: 3px solid;
   overflow: hidden;
@@ -347,8 +347,8 @@ HTML("""
 .info-box.instructions { border-color: #38bdf8; }
 .info-box.limitations  { border-color: #f87171; }
 .info-box h4 {
-  margin: 0 0 8px 0;
-  font-size: 13px;
+  margin: 0 0 clamp(6px, 0.8vw, 12px) 0;
+  font-size: clamp(13px, 1.1vw, 17px);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -357,8 +357,8 @@ HTML("""
 .info-box.limitations  h4 { color: #f87171; }
 .info-box ol {
   margin: 0;
-  padding-left: 16px;
-  line-height: 1.6;
+  padding-left: clamp(14px, 1.5vw, 20px);
+  line-height: clamp(1.6, 2vw, 2);
   color: #94a3b8;
 }
 </style>
@@ -406,7 +406,7 @@ HTML("""
   padding: 15px;
   overflow-y: auto;
   color: #e2e8f0;
-  font-size: 14px;
+  font-size: clamp(13px, 1.1vw, 17px);
 }
 .message { margin-bottom: 10px; line-height: 1.5; }
 .user-message strong { color: #38bdf8; }
@@ -422,7 +422,7 @@ HTML("""
   border: 1px solid #334155;
   background: #1f2937;
   color: #e2e8f0;
-  font-size: 14px;
+  font-size: clamp(13px, 1.1vw, 17px);
   outline: none;
 }
 .chat-input-row button {
@@ -433,7 +433,7 @@ HTML("""
   color: #0f172a;
   font-weight: bold;
   cursor: pointer;
-  font-size: 14px;
+  font-size: clamp(13px, 1.1vw, 17px);
 }
 .chat-input-row button:hover { background: #7dd3fc; }
 </style>
