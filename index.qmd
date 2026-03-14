@@ -25,14 +25,14 @@ risk_signals = pd.read_csv("data/risk_signals.csv")
 
 def style_plot(fig):
     fig.update_layout(
-        paper_bgcolor="#1e293b",
-        plot_bgcolor="#1e293b",
-        font=dict(color="#e2e8f0"),
+        paper_bgcolor="#ffffff",
+        plot_bgcolor="#f0fdf4",
+        font=dict(color="#14532d"),
         margin=dict(l=30, r=20, t=60, b=30),
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
     )
     fig.update_xaxes(showgrid=False, zeroline=False)
-    fig.update_yaxes(gridcolor="rgba(148, 163, 184, 0.18)", zeroline=False)
+    fig.update_yaxes(gridcolor="rgba(20, 83, 45, 0.12)", zeroline=False)
     return fig
 ```
 
@@ -335,11 +335,11 @@ HTML("""
 .info-box {
   flex: 1;
   align-self: flex-start;
-  background: #1f2937;
+  background: #f0fdf4;
   border-radius: 10px;
   padding: clamp(8px, 1.5vw, 20px);
   font-size: clamp(12px, 1.2vw, 16px);
-  color: #e2e8f0;
+  color: #14532d;
   border-left: 3px solid;
 }
 .info-box.instructions { border-color: #38bdf8; }
@@ -404,11 +404,11 @@ HTML("""
 }
 .chat-window {
   flex: 1;
-  background: #1f2937;
+  background: #ffffff;
   border-radius: 12px;
   padding: 15px;
   overflow-y: auto;
-  color: #e2e8f0;
+  color: #14532d;
   font-size: clamp(13px, 1.1vw, 17px);
 }
 .message { margin-bottom: 10px; line-height: 1.5; }
