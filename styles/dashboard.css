@@ -1,8 +1,8 @@
 /*Cosmetics for the page*/
 /* Page background and base text */
 body {
-  background: #f1f5f9;
-  color: #1e293b;
+  background: #f0fdf4;
+  color: #14532d;
 }
 
 /* Dashboard spacing */
@@ -10,9 +10,9 @@ body {
   padding-top: 0.75rem;
 }
 
-/* Navbar - clean dark blue */
+/* Navbar - deep green */
 .navbar {
-  background: linear-gradient(90deg, #1e40af, #3b82f6) !important;
+  background: linear-gradient(90deg, #166534, #16a34a) !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
@@ -23,19 +23,19 @@ body {
   color: #ffffff !important;
 }
 
-/* Cards - white with subtle border */
+/* Cards - white with green tint border */
 .card,
 .quarto-dashboard .card {
   background: #ffffff !important;
-  border: 1px solid #e2e8f0 !important;
+  border: 1px solid #bbf7d0 !important;
   border-radius: 14px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
 }
 
-/* Card titles - dark blue accent */
+/* Card titles */
 .card-title,
 .quarto-dashboard .card-title {
-  color: #1e40af !important;
+  color: #166534 !important;
   font-weight: 700;
 }
 
@@ -46,16 +46,16 @@ body {
   gap: 1rem;
 }
 
-/* Metric tiles - light grey */
+/* Metric tiles */
 .metric-tile {
-  background: #f8fafc !important;
-  border: 1px solid #e2e8f0 !important;
+  background: #f0fdf4 !important;
+  border: 1px solid #bbf7d0 !important;
   border-radius: 12px;
   padding: 1rem 1.1rem;
 }
 
 .metric-label {
-  color: #64748b !important;
+  color: #4b7a5a !important;
   font-size: 0.85rem;
   margin-bottom: 0.35rem;
   text-transform: uppercase;
@@ -63,14 +63,14 @@ body {
 }
 
 .metric-value {
-  color: #1e293b !important;
+  color: #14532d !important;
   font-size: 2rem;
   font-weight: 700;
   line-height: 1.1;
 }
 
 .metric-sub {
-  color: #64748b !important;
+  color: #4b7a5a !important;
   font-size: 0.85rem;
   margin-top: 0.35rem;
 }
@@ -84,21 +84,21 @@ body {
 }
 
 .assistant-intro {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
   border-radius: 12px;
   padding: 1rem;
 }
 
 .assistant-title {
-  color: #1e293b;
+  color: #14532d;
   font-size: 1.05rem;
   font-weight: 700;
   margin-bottom: 0.35rem;
 }
 
 .assistant-subtitle {
-  color: #64748b;
+  color: #4b7a5a;
   font-size: 0.95rem;
 }
 
@@ -109,9 +109,9 @@ body {
 }
 
 .suggestion-chip {
-  background: #eff6ff;
-  color: #1e40af;
-  border: 1px solid #bfdbfe;
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
   border-radius: 999px;
   padding: 0.4rem 0.75rem;
   font-size: 0.85rem;
@@ -121,8 +121,8 @@ body {
 .chat-window {
   flex: 1;
   min-height: 360px;
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
   border-radius: 12px;
   padding: 1rem;
   overflow-y: auto;
@@ -136,13 +136,13 @@ body {
 }
 
 .assistant-message {
-  background: #eff6ff;
-  color: #1e3a8a;
+  background: #dcfce7;
+  color: #14532d;
 }
 
 .user-message {
-  background: #f5f3ff;
-  color: #4c1d95;
+  background: #f0fdf4;
+  color: #166534;
 }
 
 /* Chat input */
@@ -154,20 +154,20 @@ body {
 .chat-input-row input {
   flex: 1;
   background: #ffffff;
-  color: #1e293b;
-  border: 1px solid #e2e8f0;
+  color: #14532d;
+  border: 1px solid #bbf7d0;
   border-radius: 10px;
   padding: 0.85rem 0.95rem;
 }
 
 .chat-input-row input:focus {
   outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 0.15rem rgba(59, 130, 246, 0.18);
+  border-color: #16a34a;
+  box-shadow: 0 0 0 0.15rem rgba(22, 163, 74, 0.18);
 }
 
 .chat-input-row button {
-  background: #3b82f6;
+  background: #16a34a;
   color: #ffffff;
   border: none;
   border-radius: 10px;
@@ -176,11 +176,11 @@ body {
 }
 
 .chat-input-row button:hover {
-  background: #1e40af;
+  background: #166534;
 }
 
 .assistant-note {
-  color: #64748b;
+  color: #4b7a5a;
   font-size: 0.85rem;
 }
 
