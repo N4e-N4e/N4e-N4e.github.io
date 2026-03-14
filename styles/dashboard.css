@@ -1,21 +1,21 @@
 /*Cosmetics for the page*/
+/* Page background and base text */
 body {
   background: #f1f5f9;
   color: #1e293b;
 }
 
-/* Tune the dashboard body spacing for a roomier layout */
+/* Dashboard spacing */
 .quarto-dashboard .dashboard-page {
   padding-top: 0.75rem;
 }
 
-/* Refine the navbar to echo the original gradient header */
+/* Navbar - clean dark blue */
 .navbar {
-  background: linear-gradient(90deg, #0ea5e9, #6366f1) !important;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  background: linear-gradient(90deg, #1e40af, #3b82f6) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Keep the navbar text high-contrast on the bright header */
 .navbar a,
 .navbar .navbar-brand,
 .navbar .nav-link,
@@ -23,62 +23,59 @@ body {
   color: #ffffff !important;
 }
 
-/* Style dashboard cards so the layout resembles the original HTML shell */
+/* Cards - white with subtle border */
 .card,
 .quarto-dashboard .card {
-  background: #0ea5e9;
-  border: 1px solid rgba(148, 163, 184, 0.12);
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
   border-radius: 14px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
 }
 
-/* Highlight card titles with the same bright accent used in the original page */
+/* Card titles - dark blue accent */
 .card-title,
 .quarto-dashboard .card-title {
-  color: #0ea5e9  !important;
+  color: #1e40af !important;
   font-weight: 700;
 }
 
-/* Create a responsive summary-metric grid for each page */
+/* Metric grid */
 .metric-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
 }
 
-/* Style each metric tile as a compact inner card */
+/* Metric tiles - light grey */
 .metric-tile {
-  background: #f8fafc  !important;
-  border: 1px solid rgba(56, 189, 248, 0.18);
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
   border-radius: 12px;
   padding: 1rem 1.1rem;
 }
 
-/* Style the metric label text */
 .metric-label {
-  color: #64748b  !important;
+  color: #64748b !important;
   font-size: 0.85rem;
   margin-bottom: 0.35rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
 
-/* Style the primary metric number */
 .metric-value {
-  color: #1e293b  !important;
+  color: #1e293b !important;
   font-size: 2rem;
   font-weight: 700;
   line-height: 1.1;
 }
 
-/* Style the secondary metric descriptor */
 .metric-sub {
-  color: #64748b  !important;
+  color: #64748b !important;
   font-size: 0.85rem;
   margin-top: 0.35rem;
 }
 
-/* Create the assistant page shell */
+/* Assistant shell */
 .assistant-shell {
   display: flex;
   flex-direction: column;
@@ -86,57 +83,51 @@ body {
   gap: 1rem;
 }
 
-/* Style the assistant intro block */
 .assistant-intro {
-  background: #111827;
-  border: 1px solid rgba(56, 189, 248, 0.18);
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
   border-radius: 12px;
   padding: 1rem;
 }
 
-/* Style the assistant heading */
 .assistant-title {
-  color: #f8fafc;
+  color: #1e293b;
   font-size: 1.05rem;
   font-weight: 700;
   margin-bottom: 0.35rem;
 }
 
-/* Style the assistant subtitle text */
 .assistant-subtitle {
-  color: #94a3b8;
+  color: #64748b;
   font-size: 0.95rem;
 }
 
-/* Lay out the suggested prompt chips */
 .assistant-suggestions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
 }
 
-/* Style each suggested prompt chip */
 .suggestion-chip {
-  background: rgba(56, 189, 248, 0.12);
-  color: #bae6fd;
-  border: 1px solid rgba(56, 189, 248, 0.22);
+  background: #eff6ff;
+  color: #1e40af;
+  border: 1px solid #bfdbfe;
   border-radius: 999px;
   padding: 0.4rem 0.75rem;
   font-size: 0.85rem;
 }
 
-/* Style the chat transcript window */
+/* Chat window */
 .chat-window {
   flex: 1;
   min-height: 360px;
-  background: #111827;
-  border: 1px solid rgba(148, 163, 184, 0.14);
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
   border-radius: 12px;
   padding: 1rem;
   overflow-y: auto;
 }
 
-/* Style each chat message bubble */
 .message {
   margin-bottom: 0.75rem;
   padding: 0.75rem 0.9rem;
@@ -144,58 +135,56 @@ body {
   line-height: 1.45;
 }
 
-/* Distinguish assistant messages visually */
 .assistant-message {
-  background: rgba(56, 189, 248, 0.12);
-  color: #e0f2fe;
+  background: #eff6ff;
+  color: #1e3a8a;
 }
 
-/* Distinguish user messages visually */
 .user-message {
-  background: rgba(99, 102, 241, 0.2);
-  color: #e9d5ff;
+  background: #f5f3ff;
+  color: #4c1d95;
 }
 
-/* Style the chat input row */
+/* Chat input */
 .chat-input-row {
   display: flex;
   gap: 0.75rem;
 }
 
-/* Style the text input */
 .chat-input-row input {
   flex: 1;
-  background: #111827;
-  color: #f8fafc;
-  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: #ffffff;
+  color: #1e293b;
+  border: 1px solid #e2e8f0;
   border-radius: 10px;
   padding: 0.85rem 0.95rem;
 }
 
-/* Remove the default focus outline and replace with the accent border */
 .chat-input-row input:focus {
   outline: none;
-  border-color: #38bdf8;
-  box-shadow: 0 0 0 0.15rem rgba(56, 189, 248, 0.18);
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 0.15rem rgba(59, 130, 246, 0.18);
 }
 
-/* Style the send button */
 .chat-input-row button {
-  background: #38bdf8;
-  color: #020617;
+  background: #3b82f6;
+  color: #ffffff;
   border: none;
   border-radius: 10px;
   padding: 0.85rem 1.1rem;
   font-weight: 700;
 }
 
-/* Style the implementation note under the chat box */
+.chat-input-row button:hover {
+  background: #1e40af;
+}
+
 .assistant-note {
-  color: #94a3b8;
+  color: #64748b;
   font-size: 0.85rem;
 }
 
-/* Adjust metric tiles and chat spacing on narrower screens */
+/* Responsive */
 @media (max-width: 900px) {
   .metric-grid {
     grid-template-columns: 1fr;
