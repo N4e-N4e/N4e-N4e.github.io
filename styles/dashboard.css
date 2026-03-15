@@ -4,6 +4,12 @@ body {
   background: #f0fdf4;
   color: #14532d;
 }
+
+/* Disable Night Mode option entirely */
+.quarto-color-scheme-toggle {
+  display: none !important;
+}
+
 /* Dashboard spacing */
 .quarto-dashboard .dashboard-page {
   padding-top: 0.75rem;
