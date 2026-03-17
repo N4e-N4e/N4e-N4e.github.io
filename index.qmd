@@ -18,6 +18,7 @@ from IPython.display import HTML
 
 open_payments = pd.read_csv("data/open_payments.csv")
 suppliers = pd.read_csv("data/suppliers.csv")
+surges_count = pd.read_csv("data/surges_count.csv")
 supplier_spike_trend = pd.read_csv("data/supplier_spike_trend.csv")
 supplier_hcpcs_table = pd.read_csv("data/supplier_hcPCS_table.csv")
 surges_products = pd.read_csv("data/surges_products.csv")
