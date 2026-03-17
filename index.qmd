@@ -118,8 +118,8 @@ fig.show()
 ```{python}
 #| title: "Supplier Snapshot"
 
-supplier_spend_total = surges_count["Total_Spend"].astype('float64')
-supplier_risk_orders = surges_count["Surge_Supplier_Count"].astype('float64')
+supplier_spend_total = surges_count["Total_Spend"].sum()
+supplier_risk_orders = surges_count["Surge_Supplier_Count"].sum()
 supplier_avg_risk = suppliers["supplier_risk_score"].mean()
 
 HTML(f"""
