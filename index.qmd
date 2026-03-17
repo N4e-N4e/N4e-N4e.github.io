@@ -117,14 +117,14 @@ fig.show()
 ```{python}
 #| title: "Supplier Snapshot"
 
-supplier_spend_total = suppliers["total_spend_m"].sum()
-supplier_risk_orders = suppliers["high_risk_orders"].sum()
 supplier_avg_risk = suppliers["supplier_risk_score"].mean()
+supplier_spend_total = surges_count["Total_Spend"]
+supplier_risk_orders = surges_count["Surge_Supplier_Count"]
 
 HTML(f"""
 <div class='metric-grid'>
   <div class='metric-tile'>
-    <div class='metric-label'>Supplier Spend</div>
+    <div class='metric-label'>Total Supplier Spend from 2021 to 2023</div>
     <div class='metric-value'>${supplier_spend_total:,.1f}M</div>
     <div class='metric-sub'>Across strategic vendors</div>
   </div>
