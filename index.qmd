@@ -170,30 +170,9 @@ HTML(f"""
 ```
 
 
-## Row {height="66%"}
 
 ```{python}
-#| title: "Supplier Billing Trends: Spike & Disappearance"
-
-fig = px.line(
-    supplier_spike_trend,
-    x="year",
-    y="tot_suplr_srvcs",
-    color="suplr_npi",
-    markers=True,
-    labels={
-        "year": "Year",
-        "tot_suplr_srvcs": "Total Services",
-        "suplr_npi": "Supplier NPI"
-    }
-)
-
-fig = style_plot(fig)
-fig.show()
-```
-
-```{python}
-#| title: "Supplier HCPCS Billing Heatmap"
+#| title: "Supplier HCPCS Billing"
 
 supplier_hcpcs_table
 
