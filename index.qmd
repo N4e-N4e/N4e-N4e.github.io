@@ -139,28 +139,36 @@ mini_chart_html = mini_fig.to_html(full_html=False, include_plotlyjs=False)
 
 supplier_spend_total = surges_count["Total_Spend"].sum()
 supplier_risk_orders = surges_count["Surge_Supplier_Count"].sum()
-supplier_avg_risk = suppliers["supplier_risk_score"].mean()
 
 HTML(f"""
 <div class='metric-grid'>
+
   <div class='metric-tile'>
-    <div class='metric-label'>Total Supplier Spend from 2021 to 2023</div>
+    <div class='metric-label'>Total Supplier Spend (2021–2023)</div>
     <div class='metric-value'>${supplier_spend_total/1000000:,.0f}M</div>
     <div class='metric-sub'>Across strategic vendors</div>
   </div>
+
   <div class='metric-tile'>
     <div class='metric-label'>High-Risk Orders</div>
     <div class='metric-value'>{supplier_risk_orders:,.0f}</div>
     <div class='metric-sub'>Flagged in sample history</div>
   </div>
+
   <div class='metric-tile'>
-    <div class='metric-label'>Avg. Supplier Risk</div>
-    <div class='metric-value'>{supplier_avg_risk:.1f}</div>
-    <div class='metric-sub'>Scaled 0 to 100</div>
+    <div class='metric-label'>Supplier Activity Trend</div>
+    
+    <!-- 🔥 YOUR SPIKE LINE LIVES HERE -->
+    <div>{mini_chart_html}</div>
+    
+    <div class='metric-sub'>Spike & disappearance pattern</div>
   </div>
+
 </div>
 """)
+
 ```
+
 
 ## Row {height="66%"}
 
