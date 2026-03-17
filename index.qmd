@@ -110,7 +110,17 @@ fig = px.pie(
 fig = style_plot(fig)
 fig.show()
 ```
+
+# Suppliers
+
+## Row {height="34%"}
+
 ```{python}
+#| title: "Supplier Snapshot"
+
+supplier_spend_total = surges_count["Total_Spend"].sum()
+supplier_risk_orders = surges_count["Surge_Supplier_Count"].sum()
+
 mini_fig = px.line(
     supplier_spike_trend,
     x="year",
@@ -129,16 +139,6 @@ mini_fig.update_layout(
 mini_fig.update_traces(line=dict(width=3))
 
 mini_chart_html = mini_fig.to_html(full_html=False, include_plotlyjs=False)
-```
-# Suppliers
-
-## Row {height="34%"}
-
-```{python}
-#| title: "Supplier Snapshot"
-
-supplier_spend_total = surges_count["Total_Spend"].sum()
-supplier_risk_orders = surges_count["Surge_Supplier_Count"].sum()
 
 HTML(f"""
 <div class='metric-grid'>
