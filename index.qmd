@@ -126,7 +126,7 @@ HTML(f"""
 <div class='metric-grid'>
   <div class='metric-tile'>
     <div class='metric-label'>Total Supplier Spend from 2021 to 2023</div>
-    <div class='metric-value'>${supplier_spend_total:,.0f}M</div>
+    <div class='metric-value'>${supplier_spend_total:,.0f}</div>
     <div class='metric-sub'>Across strategic vendors</div>
   </div>
   <div class='metric-tile'>
