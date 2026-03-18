@@ -354,7 +354,7 @@ HTML("""
   background: #f0fdf4;
   border-radius: 10px;
   padding: clamp(8px, 1.5vw, 20px);
-  font-size: 30px;
+  font-size: 20px;
   color: #14532d;
   border-left: 3px solid;
 }
