@@ -371,7 +371,7 @@ HTML("""
 .info-box.limitations  h4 { color: #f87171; }
 .info-box ol {
   margin: 0;
-  padding-left: clamp(12px, 1.5vw, 20px);
+  padding-left: clamp(18px, 1.5vw, 20px);
   line-height: clamp(1.6, 1.8vw, 1.8);
   color: #94a3b8;
 }
