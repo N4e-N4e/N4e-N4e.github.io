@@ -354,7 +354,7 @@ HTML("""
   background: #f0fdf4;
   border-radius: 10px;
   padding: clamp(8px, 1.5vw, 20px);
-  font-size: clamp(12px, 1.2vw, 16px);
+  font-size: 30px;
   color: #14532d;
   border-left: 3px solid;
 }
@@ -371,7 +371,7 @@ HTML("""
 .info-box.limitations  h4 { color: #f87171; }
 .info-box ol {
   margin: 0;
-  padding-left: clamp(30px, 1.5vw, 30px);
+  padding-left: clamp(13px, 1.5vw, 18px);
   line-height: clamp(1.6, 1.8vw, 1.8);
   color: #94a3b8;
 }
