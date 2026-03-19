@@ -37,7 +37,8 @@ body {
 .card-title,
 .quarto-dashboard .card-title {
   color: #166534 !important;
-  font-weight: 700;
+  font-weight: 700,
+  font-size: 1.3rem !important;
 }
 /* Metric grid */
 .metric-grid {
