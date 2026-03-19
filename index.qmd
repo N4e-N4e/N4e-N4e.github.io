@@ -386,7 +386,7 @@ HTML("""
   <div class="info-box instructions">
     <h4>How to Use</h4>
     <ol>
-      <li>Type a person's name, business name, or topic into the chat box and press <strong>Send</strong> or hit <strong>Enter</strong>.</li>
+      <li>Type a name, business, or topic into the chat box and press <strong>Send</strong> or hit <strong>Enter</strong>.</li>
       <li>The AI will search the relevant database and return a <strong>Summary</strong> and <strong>Fraud Analysis</strong>.</li>
       <li>For best results, use a full name, business name, or NPI number.</li>
       <li>To target a specific database, mention <strong>OIG</strong> or <strong>SOS</strong> in your question.</li>
@@ -395,9 +395,9 @@ HTML("""
   <div class="info-box limitations">
     <h4>Limitations</h4>
     <ol>
-      <li>Information is sourced from two databases only — <strong>HHS OIG</strong> and <strong>Missouri Secretary of State (SOS)</strong>.</li>
-      <li>The AI searches <strong>one database per question</strong>. If none is specified, it will decide based on your question.</li>
-      <li>Responses are based on the <strong>first result returned</strong>. More results can be included but will increase response time.</li>
+      <li>Information is sourced from two databases only — <strong>HHS OIG</strong> and <strong>Missouri SOS</strong>.</li>
+      <li>The AI searches <strong>one database per question</strong>. It will decide which one if not specified.</li>
+      <li>Responses use the <strong>first result returned</strong>. More results can be included but will slow response time.</li>
       <li>The AI is limited to <strong>2 questions per minute</strong>. If you receive an error, wait a moment and try again.</li>
     </ol>
   </div>
