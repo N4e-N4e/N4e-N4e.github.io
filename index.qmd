@@ -354,7 +354,7 @@ HTML("""
   background: #f0fdf4;
   border-radius: 10px;
   padding: clamp(8px, 1.5vw, 20px);
-  font-size: (10px, 1.2vw, 16px);
+  font-size: (12px, 1.2vw, 16px);
   color: #14532d;
   border-left: 3px solid;
 }
@@ -362,7 +362,7 @@ HTML("""
 .info-box.limitations  { border-color: #f87171; }
 .info-box h4 {
   margin: 0 0 clamp(4px, 0.8vw, 10px) 0;
-  font-size: clamp(13px, 1.2vw, 18px);
+  font-size: clamp(12px, 1.2vw, 16px);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -371,7 +371,7 @@ HTML("""
 .info-box.limitations  h4 { color: #f87171; }
 .info-box ol {
   margin: 0;
-  padding-left: clamp(12px, 1.5vw, 18px);
+  padding-left: clamp(12px, 1.5vw, 20px);
   line-height: clamp(1.6, 1.8vw, 1.8);
   color: #94a3b8;
 }
